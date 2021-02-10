@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserAuth"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/kavoon"
+        android:text="Confirm Your Number"
+        android:textColor="#555">
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/cpp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:ccp_autoDetectCountry="true"
+            app:ccp_showFlag="true"
+            app:ccp_showNameCode="true"
+            app:ccp_showFullName="true"
+            android:background="@drawable/cpp_background">
+        </com.hbb20.CountryCodePicker>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userCred"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconTint="#555"
+            app:endIconTint="#555"
+            app:boxStrokeColor="#555"
+            app:endIconMode="clear_text"
+            android:layout_marginTop="20dp"
+            app:hintTextColor="#555"
+            app:boxStrokeWidthFocused="2dp"
+            android:backgroundTint="#555"
+            app:startIconDrawable="@drawable/local_phone"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textColor="#555"
+                android:hint="@string/phone"
+                android:inputType="phone">
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/confrm_Btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#555"
+            android:fontFamily="@font/atma_semibold"
+            android:text="Confirm"
+            android:textColor="@color/white"></Button>
+
+
+    </LinearLayout>
+
+</LinearLayout>

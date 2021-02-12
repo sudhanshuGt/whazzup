@@ -33,7 +33,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:ccp_autoDetectCountry="true"
+            app:ccp_countryAutoDetectionPref="LOCALE_SIM"
             app:ccp_showFlag="true"
+            app:ccp_rememberLastSelection="true"
             app:ccp_showNameCode="true"
             app:ccp_showFullName="true"
             android:background="@drawable/cpp_background">

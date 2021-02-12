@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+     <item
+         android:id="@+id/chat_sec"
+         android:title="chat"
+         android:icon="@drawable/chatting"
+         app:cnb_backgroundColor="#fff">
+     </item>
+    
+    <item
+        android:id="@+id/phone_sec"
+        android:title="calls"
+        android:icon="@drawable/phone"
+        app:cnb_backgroundColor="#fff">
+    </item>
+
+</menu>

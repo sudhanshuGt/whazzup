@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    tools:context=".userprofilesetup">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/user"
+        android:layout_marginTop="80dp"
+        app:civ_circle_background_color="#ffffff"
+        android:layout_gravity="center_horizontal"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#ccc"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/atma_semibold"
+        android:letterSpacing="0.2"
+        android:text="Set your profile picture here "
+        android:textSize="18dp"></TextView>
+
+    <EditText
+        android:id="@+id/editTextUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:inputType="textPersonName"
+        android:hint="username"/>
+
+    <EditText
+        android:id="@+id/editTextAbout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:inputType="textPersonName"
+        android:text="hey there i'm using whazzup !" />
+
+
+
+    <Button
+        android:id="@+id/buttonSetupProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F8F9F9"
+        android:layout_margin="20dp"
+        android:text="Update profile" />
+
+    <TextView
+        android:id="@+id/skipProfileSetup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="do it later"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/atma_semibold"
+        android:layout_gravity="center_horizontal"
+        android:textSize="18dp">
+
+    </TextView>
+
+
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <gradient
+        android:type="linear"
+        android:angle="0"
+        android:startColor="#fff"
+        android:centerColor="#F8F9F9"
+        android:endColor="#fff" />
+    <corners
+        android:bottomLeftRadius="10dp"
+        android:bottomRightRadius="10dp">
+    </corners>
+</shape>

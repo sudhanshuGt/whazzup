@@ -63,7 +63,7 @@
             app:itemCount="6"
             app:itemHeight="48dp"
             app:itemRadius="0dp"
-            app:itemSpacing="7dp"
+            app:itemSpacing="8dp"
             app:itemWidth="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

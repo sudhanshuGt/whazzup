@@ -22,11 +22,15 @@ public class UserAuth extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_auth);
+        // firebase initialize
         FirebaseApp.initializeApp(this);
 
+        // layout view
         textInputLayout = findViewById(R.id.userCred);
         buttonConfrm = findViewById(R.id.confrm_Btn);
         countryCodePicker = findViewById(R.id.cpp);
+
+        // check if user is logged in already
         userIsLoggedIn();
         
 
@@ -47,7 +51,7 @@ public class UserAuth extends AppCompatActivity {
 
                 else {
                     Intent intent = new Intent(UserAuth.this, SignIn.class);
-                    intent.putExtra("phoneNum",  userCreds);
+                    intent.putExtra("phoneNum", "+" + countryCodePicker.getSelectedCountryCode() +  userCreds);
                     startActivity(intent);
                     finish();
                 }
@@ -58,10 +62,11 @@ public class UserAuth extends AppCompatActivity {
 
     }
 
+    // if user already logged in farword to home
     private void userIsLoggedIn() {
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (firebaseUser != null)
+        if (firebaseUser != null )
         {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();

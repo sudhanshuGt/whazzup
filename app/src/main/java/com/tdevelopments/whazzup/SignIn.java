@@ -3,6 +3,7 @@ package com.tdevelopments.whazzup;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,8 @@ public class SignIn extends AppCompatActivity {
     String phoneNumber;
     String OtpId;
     FirebaseAuth mAuth;
+    ProgressDialog progressDialog;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +43,28 @@ public class SignIn extends AppCompatActivity {
         textView = findViewById(R.id.textView2);
         pinView = findViewById(R.id.firstPinView);
         buttonVerfy = findViewById(R.id.buttonVerify);
+
+        // progress dialog
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Sending OTP");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        // firebase auth initialize..
         mAuth = FirebaseAuth.getInstance();
 
+
+        // receiving string pass through previous activity to this through intent
         Intent intent = getIntent();
         phoneNumber = intent.getExtras().getString("phoneNum");
 
         textView.setText( phoneNumber);
 
+        // start verification
         processOtpNow();
 
+
+        // on manual otp verification checking if field is empty and also both system generated and user enter code is same or not
         buttonVerfy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +87,7 @@ public class SignIn extends AppCompatActivity {
 
     private void processOtpNow() {
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                "+91" + phoneNumber ,
+                phoneNumber ,
                 60,
                 TimeUnit.SECONDS,
                 this,
@@ -83,6 +99,7 @@ public class SignIn extends AppCompatActivity {
         @Override
         public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             OtpId = s;
+            progressDialog.dismiss();
         }
 
         @Override
@@ -104,7 +121,7 @@ public class SignIn extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                                  Intent intent = new Intent(SignIn.this, MainActivity.class);
+                                  Intent intent = new Intent(SignIn.this, userprofilesetup.class);
                                   startActivity(intent);
                                   finish();
                                   return;

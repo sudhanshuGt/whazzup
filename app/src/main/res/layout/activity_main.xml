@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".Activity.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -55,36 +55,7 @@
 
 
     </RelativeLayout>
-<ScrollView
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <RelativeLayout
-
-        android:layout_width="match_parent"
-
-        android:layout_height="wrap_content">
-
-    <LinearLayout
-        android:id="@+id/story_secz"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/story_recycler"
-            android:orientation="horizontal"
-            android:scrollbarAlwaysDrawHorizontalTrack="true"
-            android:padding="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="65dp">
-        </androidx.recyclerview.widget.RecyclerView>
-
-    </LinearLayout>
-
-    </RelativeLayout>
-
-</ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -107,7 +78,7 @@
            app:cnb_radius="20dp"
            android:elevation="10dp"
            app:cnb_iconSize="24dp"
-           android:padding="10dp"
+           android:padding="7dp"
            app:cnb_orientationMode="horizontal"
            app:layout_constraintBottom_toBottomOf="@id/frameForFrag"
            app:cnb_menuResource="@menu/bottom_nav">

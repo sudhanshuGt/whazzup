@@ -1,26 +1,18 @@
-package com.tdevelopments.whazzup;
+package com.tdevelopments.whazzup.Activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
-import com.tdevelopments.whazzup.UserModel.User;
+import com.tdevelopments.whazzup.R;
 import com.tdevelopments.whazzup.fragments.CallFragment;
 import com.tdevelopments.whazzup.fragments.chatFragment;
 

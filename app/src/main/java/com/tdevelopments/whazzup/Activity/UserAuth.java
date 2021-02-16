@@ -1,4 +1,4 @@
-package com.tdevelopments.whazzup;
+package com.tdevelopments.whazzup.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +12,7 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.hbb20.CountryCodePicker;
+import com.tdevelopments.whazzup.R;
 
 
 public class UserAuth extends AppCompatActivity {

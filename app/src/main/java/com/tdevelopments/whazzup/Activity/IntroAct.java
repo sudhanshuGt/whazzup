@@ -1,9 +1,11 @@
-package com.tdevelopments.whazzup;
+package com.tdevelopments.whazzup.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.tdevelopments.whazzup.R;
 
 public class IntroAct extends AppCompatActivity {
 

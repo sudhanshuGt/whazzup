@@ -2,32 +2,32 @@ package com.tdevelopments.whazzup.UserModel;
 
 public class User {
 
-    String UserId , UserName , phoneNumber ,  UserProfilePic , userAbout ;
+    String userId , userName , phoneNumber ,  userProfilePic , userAbout ;
 
     public User () {}
 
     public User(String userId, String userName, String phoneNumber, String userProfilePic, String userAbout) {
-        UserId = userId;
-        UserName = userName;
+        this.userId = userId;
+        this.userName = userName;
         this.phoneNumber = phoneNumber;
-        UserProfilePic = userProfilePic;
+        this.userProfilePic = userProfilePic;
         this.userAbout = userAbout;
     }
 
     public String getUserId() {
-        return UserId;
+        return userId;
     }
 
     public void setUserId(String userId) {
-        UserId = userId;
+        this.userId = userId;
     }
 
     public String getUserName() {
-        return UserName;
+        return userName;
     }
 
     public void setUserName(String userName) {
-        UserName = userName;
+        this.userName = userName;
     }
 
     public String getPhoneNumber() {
@@ -39,11 +39,11 @@ public class User {
     }
 
     public String getUserProfilePic() {
-        return UserProfilePic;
+        return userProfilePic;
     }
 
     public void setUserProfilePic(String userProfilePic) {
-        UserProfilePic = userProfilePic;
+        this.userProfilePic = userProfilePic;
     }
 
     public String getUserAbout() {

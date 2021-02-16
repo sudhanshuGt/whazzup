@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffffff"
-    tools:context=".userprofilesetup">
+    tools:context=".Activity.userprofilesetup">
 
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -28,8 +28,10 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/atma_semibold"
         android:letterSpacing="0.2"
-        android:text="Set your profile picture here "
-        android:textSize="18dp"></TextView>
+        android:text="@string/set_your_profile_picture_here"
+        android:textSize="18sp">
+
+    </TextView>
 
     <EditText
         android:id="@+id/editTextUsername"
@@ -40,7 +42,8 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:inputType="textPersonName"
-        android:hint="username"/>
+        android:hint="@string/username"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editTextAbout"
@@ -48,10 +51,12 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_marginLeft="20dp"
+        android:autofillHints=""
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         android:inputType="textPersonName"
-        android:text="hey there i'm using whazzup !" />
+        android:text="@string/hey_there_i_m_using_whazzup"
+        tools:ignore="LabelFor" />
 
 
 
@@ -61,17 +66,17 @@
         android:layout_height="wrap_content"
         android:background="#F8F9F9"
         android:layout_margin="20dp"
-        android:text="Update profile" />
+        android:text="@string/update_profile" />
 
     <TextView
         android:id="@+id/skipProfileSetup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="do it later"
+        android:text="@string/do_it_later"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/atma_semibold"
         android:layout_gravity="center_horizontal"
-        android:textSize="18dp">
+        android:textSize="18sp">
 
     </TextView>
 

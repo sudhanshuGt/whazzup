@@ -1,4 +1,4 @@
-package com.tdevelopments.whazzup;
+package com.tdevelopments.whazzup.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,12 +17,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
-
-import org.w3c.dom.Text;
+import com.tdevelopments.whazzup.R;
 
 import java.util.concurrent.TimeUnit;
 

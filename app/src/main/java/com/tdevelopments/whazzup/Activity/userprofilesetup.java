@@ -1,9 +1,8 @@
-package com.tdevelopments.whazzup;
+package com.tdevelopments.whazzup.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -21,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.tdevelopments.whazzup.R;
 import com.tdevelopments.whazzup.UserModel.User;
 
 import de.hdodenhof.circleimageview.CircleImageView;

@@ -10,12 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Whazzup"
         android:usesCleartextTraffic="true">
-        <activity android:name=".userprofilesetup"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
-        </activity>
-
+        <activity android:name=".Activity.chatActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge"></activity>
         <activity
-            android:name=".IntroAct"
+            android:name=".Activity.userprofilesetup"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge"></activity>
+        <activity
+            android:name=".Activity.IntroAct"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,23 +25,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignIn"
+            android:name=".Activity.SignIn"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge" />
         <activity
-            android:name=".UserAuth"
+            android:name=".Activity.UserAuth"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge" />
 
-
-        
-
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
-
- 
-    
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

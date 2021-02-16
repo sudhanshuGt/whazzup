@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8E44AD"
+    android:background="#fff"
     tools:context=".fragments.CallFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,7 +17,7 @@
             android:fontFamily="@font/atma_semibold"
             android:text="Call fragment"
             android:textSize="30dp"
-            android:textColor="#fff"
+            android:textColor="#555"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

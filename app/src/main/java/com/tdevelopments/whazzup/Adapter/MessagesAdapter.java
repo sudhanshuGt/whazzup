@@ -28,15 +28,13 @@ public class MessagesAdapter extends RecyclerView.Adapter {
     ArrayList<Message> messages;
     final int ITEM_SENT = 1;
     final int ITEM_RECIEVE = 2;
-    String senderRoom;
-    String receiverRoom;
+
     
 
-    public MessagesAdapter(Context context , ArrayList<Message> messages , String senderRoom, String receiverRoom){
+    public MessagesAdapter(Context context , ArrayList<Message> messages){
         this.context = context;
         this.messages = messages;
-        this.senderRoom = senderRoom;
-        this.receiverRoom = receiverRoom;
+
     }                                                          
 
     @NonNull
@@ -71,79 +69,20 @@ public class MessagesAdapter extends RecyclerView.Adapter {
         Message message = messages.get(position);
 
 
-        int reaction[] = new int[]{
-                R.drawable.likereact,
-                R.drawable.heartreact,
-                R.drawable.laughing,
-                R.drawable.hearteye,
-                R.drawable.wowreat,
-                R.drawable.sad
-        };
-        ReactionsConfig config = new ReactionsConfigBuilder(context)
-                .withReactions(reaction)
-                .build();
-        ReactionPopup popup = new ReactionPopup(context, config, (newpose) -> {
-            if (holder.getClass() == SentViewHolder.class) {
-                SentViewHolder viewHolder = (SentViewHolder)holder;
-                viewHolder.feelingS.setImageResource(reaction[newpose]);
-            }
-            else {
-                RecieverViewHolder recieverViewHolder = (RecieverViewHolder)holder;
-                recieverViewHolder.feelingR.setImageResource(reaction[newpose]);
-
-            }
-            message.setFeeling(newpose);
-            FirebaseDatabase.getInstance().getReference()
-                    .child("chats")
-                    .child("senderRoom")
-                    .child("messages")
-                    .child(message.getMessageId()).setValue(message);
-
-            FirebaseDatabase.getInstance().getReference()
-                    .child("chats")
-                    .child("receiverRoom")
-                    .child("messages")
-                    .child(message.getMessageId()).setValue(message);
-            return true; // true is closing popup, false is requesting a new selection
-        });
 
 
           if (holder.getClass() == SentViewHolder.class) {
               SentViewHolder viewHolder = (SentViewHolder)holder;
               viewHolder.sendTextView.setText(message.getMessage());
-              if (message.getFeeling() >= 0) {
-                  message.setFeeling(reaction[(int) message.getFeeling()]);
-                  viewHolder.feelingS.setVisibility(View.VISIBLE);
-              } else {
-                  viewHolder.feelingS.setVisibility(View.GONE);
-              }
 
-              viewHolder.sendTextView.setOnTouchListener(new View.OnTouchListener() {
-                  @Override
-                  public boolean onTouch(View v, MotionEvent event) {
-                      popup.onTouch(v, event);
-                      return false;
-                  }
-              });
+
           } 
           else {
               RecieverViewHolder viewHolder = (RecieverViewHolder)holder;
               viewHolder.recieveTextView.setText(message.getMessage());
-              if (message.getFeeling() >= 0) {
-                  message.setFeeling(reaction[(int) message.getFeeling()]);
-                  viewHolder.feelingR.setVisibility(View.VISIBLE);
-              }  else {
-                  viewHolder.feelingR.setVisibility(View.GONE);
-              }
 
-              viewHolder.recieveTextView.setOnTouchListener(new View.OnTouchListener() {
-                  @Override
-                  public boolean onTouch(View v, MotionEvent event) {
 
-                      popup.onTouch(v, event);
-                      return false;
-                  }
-              });
+
           }
     }
 

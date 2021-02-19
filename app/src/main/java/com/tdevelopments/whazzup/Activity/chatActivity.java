@@ -27,6 +27,7 @@ import com.tdevelopments.whazzup.UserModel.Message;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 public class chatActivity extends AppCompatActivity {
      TextView usernamer;
@@ -58,7 +59,7 @@ public class chatActivity extends AppCompatActivity {
         usernamer.setText(userNameR);
         firebaseDatabaseChat = FirebaseDatabase.getInstance();
         messages = new ArrayList<>();
-        messagesAdapter = new MessagesAdapter(this, messages, senderRoom, receiverRoom );
+        messagesAdapter = new MessagesAdapter(this, messages );
         chatboxRecyclerView = findViewById(R.id.chatboxrecy);
         chatboxRecyclerView.setAdapter(messagesAdapter);
 
@@ -100,12 +101,21 @@ public class chatActivity extends AppCompatActivity {
                Date date = new Date();
                Message message = new Message(msgFromBoxToSend, SenderUid , date.getTime() ) ;
                chatBoxTosendmsg.setText("");
-               String randomKey = firebaseDatabaseChat.getReference().push().getKey();
 
+               String randomKeyForMsg = firebaseDatabaseChat.getReference().push().getKey();
+                HashMap<String, Object> lastMsgObj = new HashMap<>();
+                lastMsgObj.put("lastMsg", message.getMessage());
+                lastMsgObj.put("lastMsgTime", date.getTime());
+
+                firebaseDatabaseChat.getReference().child("chats")
+                        .child(senderRoom).updateChildren(lastMsgObj);
+                firebaseDatabaseChat.getReference().child("chata")
+                        .child(receiverRoom).updateChildren(lastMsgObj);
+                
                firebaseDatabaseChat.getReference().child("chats")
                        .child(senderRoom)
                        .child("messages")
-                       .child(randomKey)
+                       .child(randomKeyForMsg)
                        .setValue(message)
                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                            @Override
@@ -113,7 +123,7 @@ public class chatActivity extends AppCompatActivity {
                                firebaseDatabaseChat.getReference().child("chats")
                                        .child(receiverRoom)
                                        .child("messages")
-                                       .child(randomKey)
+                                       .child(randomKeyForMsg)
                                        .setValue(message)
                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                                            @Override
@@ -123,6 +133,8 @@ public class chatActivity extends AppCompatActivity {
                                        });
                            }
                        });
+
+                       
             }
         });
 

@@ -14,6 +14,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.tdevelopments.whazzup.R;
 import com.tdevelopments.whazzup.fragments.CallFragment;
+import com.tdevelopments.whazzup.fragments.StatusFragment;
 import com.tdevelopments.whazzup.fragments.chatFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -72,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.phone_sec:
                         fragment = new CallFragment();
                         titleText.setText("Calls");
+                        break;
+                    case R.id.status_sec:
+                        fragment = new StatusFragment();
+                        titleText.setText("Status");
                         break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.frameForFrag, fragment).commit();

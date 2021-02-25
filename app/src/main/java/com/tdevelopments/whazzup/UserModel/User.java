@@ -2,32 +2,26 @@ package com.tdevelopments.whazzup.UserModel;
 
 public class User {
 
-    String userId , userName , phoneNumber ,  userProfilePic , userAbout ;
+    private String UserId, UserName, phoneNumber, profileUrl, userAbout;
 
-    public User () {}
+    public User() {
 
-    public User(String userId, String userName, String phoneNumber, String userProfilePic, String userAbout) {
-        this.userId = userId;
-        this.userName = userName;
-        this.phoneNumber = phoneNumber;
-        this.userProfilePic = userProfilePic;
-        this.userAbout = userAbout;
     }
 
     public String getUserId() {
-        return userId;
+        return UserId;
     }
 
     public void setUserId(String userId) {
-        this.userId = userId;
+        UserId = userId;
     }
 
     public String getUserName() {
-        return userName;
+        return UserName;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        UserName = userName;
     }
 
     public String getPhoneNumber() {
@@ -38,12 +32,12 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getUserProfilePic() {
-        return userProfilePic;
+    public String getProfileUrl() {
+        return profileUrl;
     }
 
-    public void setUserProfilePic(String userProfilePic) {
-        this.userProfilePic = userProfilePic;
+    public void setProfileUrl(String profileUrl) {
+        this.profileUrl = profileUrl;
     }
 
     public String getUserAbout() {
@@ -51,6 +45,14 @@ public class User {
     }
 
     public void setUserAbout(String userAbout) {
+        this.userAbout = userAbout;
+    }
+
+    public User(String userId, String userName, String phoneNumber, String profileUrl, String userAbout) {
+        UserId = userId;
+        UserName = userName;
+        this.phoneNumber = phoneNumber;
+        this.profileUrl = profileUrl;
         this.userAbout = userAbout;
     }
 }

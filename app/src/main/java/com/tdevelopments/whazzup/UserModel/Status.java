@@ -1,8 +1,11 @@
 package com.tdevelopments.whazzup.UserModel;
 
 public class Status {
-    private  String imageUrl;
+    private String imageUrl;
     private long timeStamp;
+
+    public Status() {
+    }
 
     public Status(String imageUrl, long timeStamp) {
         this.imageUrl = imageUrl;
@@ -25,3 +28,4 @@ public class Status {
         this.timeStamp = timeStamp;
     }
 }
+

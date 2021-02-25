@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     ChipNavigationBar chipNavigationBar;
     TextView titleText;
-
     FirebaseStorage firebaseStorage;
 
     @Override
@@ -32,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         chipNavigationBar = findViewById(R.id.bottom_nav);
         titleText = findViewById(R.id.page_title);
         ImageView searchbtn  = findViewById(R.id.serach_btn);
+        ImageView camerabtn = findViewById(R.id.storyImagePick);
         ImageView userView = findViewById(R.id.menu_option);
         firebaseStorage  = FirebaseStorage.getInstance();
 
@@ -51,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(MainActivity.this, UserAuth.class);
                 startActivity(intent);
+            }
+        });
+
+        camerabtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(MainActivity.this, storyImagePicker.class);
+                startActivity(intent);
+                finish();
             }
         });
 

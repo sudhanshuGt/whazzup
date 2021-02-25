@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,7 +20,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.tdevelopments.whazzup.R;
+import com.tdevelopments.whazzup.UserModel.User;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,7 +38,8 @@ public class SignIn extends AppCompatActivity {
     String OtpId;
     FirebaseAuth mAuth;
     ProgressDialog progressDialog;
-    
+    DatabaseReference firebaseRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +57,7 @@ public class SignIn extends AppCompatActivity {
 
         // firebase auth initialize..
         mAuth = FirebaseAuth.getInstance();
+        firebaseRef = FirebaseDatabase.getInstance().getReference();
 
 
         // receiving string pass through previous activity to this through intent
@@ -118,10 +127,29 @@ public class SignIn extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                                  Intent intent = new Intent(SignIn.this, userprofilesetup.class);
-                                  startActivity(intent);
-                                  finish();
-                                  return;
+                            DatabaseReference userNameRef = firebaseRef.child("users").child(mAuth.getUid());
+                            ValueEventListener eventListener = new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    if(!dataSnapshot.exists()) {
+                                        Intent intent = new Intent(SignIn.this, userprofilesetup.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                    else {
+                                        Intent intent = new Intent(SignIn.this, MainActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    Toast.makeText(SignIn.this, "error in databse matching", Toast.LENGTH_SHORT).show(); //Don't ignore errors!
+                                }
+                            };
+                            userNameRef.addListenerForSingleValueEvent(eventListener);
+
                         } else {
 
                             Toast.makeText(SignIn.this, "SignIn failed", Toast.LENGTH_SHORT).show();

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -28,7 +30,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class userprofilesetup extends AppCompatActivity {
 
     CircleImageView circleImageView;
-    EditText editUserName ,  editTextAbout ;
+    TextInputLayout editUserName ,  editTextAbout ;
     Button buttonSetProf;
     TextView skipProfSet;
 
@@ -37,6 +39,7 @@ public class userprofilesetup extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseDatabase firebaseDatabase;
     FirebaseStorage firebaseStorage;
+    ProgressDialog progressDialog;
 
 
 
@@ -47,10 +50,12 @@ public class userprofilesetup extends AppCompatActivity {
 
         // view binding or hooks
         circleImageView = findViewById(R.id.profile_image);
-        editUserName = findViewById(R.id.editTextUsername);
-        editTextAbout = findViewById(R.id.editTextAbout);
+        editUserName = findViewById(R.id.userNameSetup);
+        editTextAbout = findViewById(R.id.userAboutSetup);
         buttonSetProf = findViewById(R.id.buttonSetupProfile);
         skipProfSet = findViewById(R.id.skipProfileSetup);
+
+        progressDialog = new ProgressDialog(this);
 
 
         // firebase initialize
@@ -63,17 +68,21 @@ public class userprofilesetup extends AppCompatActivity {
         buttonSetProf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String enteredUsername = editUserName.getText().toString().trim();
+                String enteredUsername = editUserName.getEditText().getText().toString().trim();
 
-                if (enteredUsername.isEmpty())
+                if (enteredUsername.isEmpty() || selectedProf == null)
                 {
-                    editUserName.setError("username is empty !");
-                }
+                    editUserName.setError(" set profile / username please !");
+                 }
 
                
 
-                if (selectedProf != null)
+                if (selectedProf != null || !enteredUsername.isEmpty())
                 {
+                    progressDialog.setMessage("Creating Your profile , wait..");
+                    progressDialog.setCancelable(false);
+                    progressDialog.show();
+
                     StorageReference storageReference = firebaseStorage.getReference().child("UserProfile").child(firebaseAuth.getUid());
                     storageReference.putFile(selectedProf).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -87,9 +96,9 @@ public class userprofilesetup extends AppCompatActivity {
 
                                       String profileUrl = uri.toString();
                                       String UserId = firebaseAuth.getUid();
-                                      String UserName = editUserName.getText().toString().trim();
+                                      String UserName = editUserName.getEditText().getText().toString().trim();
                                       String phoneNumber = firebaseAuth.getCurrentUser().getPhoneNumber();
-                                      String userAbout = editTextAbout.getText().toString().trim();
+                                      String userAbout = editTextAbout.getEditText().getText().toString().trim();
 
                                       User user = new User(UserId, UserName, phoneNumber, profileUrl, userAbout);
 
@@ -100,6 +109,7 @@ public class userprofilesetup extends AppCompatActivity {
                                               .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                   @Override
                                                   public void onSuccess(Void aVoid) {
+                                                      progressDialog.dismiss();
                                                       Intent intent = new Intent(userprofilesetup.this, MainActivity.class);
                                                       startActivity(intent);
                                                       finish();
@@ -117,9 +127,9 @@ public class userprofilesetup extends AppCompatActivity {
                         // if user does'nt selected a profile image
 
                         String UserId = firebaseAuth.getUid();
-                        String UserName = editUserName.getText().toString().trim();
+                        String UserName = editUserName.getEditText().getText().toString().trim();
                         String phoneNumber = firebaseAuth.getCurrentUser().getPhoneNumber();
-                        String userAbout = editTextAbout.getText().toString().trim();
+                        String userAbout = editTextAbout.getEditText().getText().toString().trim();
 
                         User user = new User(UserId, UserName, phoneNumber, "No Image", userAbout);
 

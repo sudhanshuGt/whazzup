@@ -1,7 +1,7 @@
 package com.tdevelopments.whazzup.Adapter;
 
+
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,23 +16,20 @@ import com.tdevelopments.whazzup.UserModel.UserStatus;
 
 import java.util.ArrayList;
 
-public class StatusApter extends RecyclerView.Adapter<StatusApter.StatusViewHolder> {
-
+public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusViewHolder> {
     Context context;
     ArrayList<UserStatus> userStatuses;
-    
-    public StatusApter(Context context, ArrayList<UserStatus> userStatuses) {
+
+    public StatusAdapter(Context context, ArrayList<UserStatus> userStatuses) {
         this.context = context;
         this.userStatuses = userStatuses;
     }
 
-
-
-
     @NonNull
     @Override
     public StatusViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.story_layout, parent, false  );
+        View view = LayoutInflater.from(context).inflate(R.layout.story_layout, parent, false);
+
         return new StatusViewHolder(view);
     }
 
@@ -43,18 +40,19 @@ public class StatusApter extends RecyclerView.Adapter<StatusApter.StatusViewHold
 
     @Override
     public int getItemCount() {
-        return userStatuses.size();
+        return 0;
     }
 
     public class StatusViewHolder extends RecyclerView.ViewHolder {
-        ImageView userStatus;
-        TextView userNameStatus;
-        TextView timeOfStaus;
-        public StatusViewHolder(@NonNull View itemView) {
-            super(itemView);
-            userNameStatus = itemView.findViewById(R.id.statusImage);
-            userNameStatus = itemView.findViewById(R.id.userNameStatus);
-            timeOfStaus = itemView.findViewById(R.id.statusTime);
-        }
-    }
-}
+           ImageView storyImage;
+           TextView userNameS;
+           TextView timeOfS;
+           public StatusViewHolder(@NonNull View itemView) {
+               super(itemView);
+
+               storyImage = itemView.findViewById(R.id.statusImage);
+               userNameS  = itemView.findViewById(R.id.userNameStatus);
+               timeOfS = itemView.findViewById(R.id.statusTime);
+           }
+       }
+   }

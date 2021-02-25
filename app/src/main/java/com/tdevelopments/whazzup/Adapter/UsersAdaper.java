@@ -1,5 +1,6 @@
 package com.tdevelopments.whazzup.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -53,17 +54,22 @@ public class UsersAdaper extends RecyclerView.Adapter<UsersAdaper.UserViewHolder
                   .child("chats")
                   .child(senderRoom)
                   .addValueEventListener(new ValueEventListener() {
+                      @SuppressLint("SetTextI18n")
                       @Override
                       public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
 
 
                             String lastMsg = snapshot.child("lastMsg").getValue(String.class);
-                            long time = snapshot.child("lastMsgTime").getValue(long.class);
+                            Integer time = snapshot.child(user.getUserId()).child("lastMsgTime").getValue(int.class);
                             SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
 
                             holder.lastMsgInlist.setText(lastMsg);
-                            holder.lstMsgTime.setText(dateFormat.format(new Date(time)));
+                            long newTime;
+                            if (time != null) {
+                                newTime = time;
+                                holder.lstMsgTime.setText(dateFormat.format(new Date(newTime)));
+                            }
 
                         }
                         else {
@@ -79,7 +85,7 @@ public class UsersAdaper extends RecyclerView.Adapter<UsersAdaper.UserViewHolder
                   });
 
           holder.userName.setText(user.getUserName());
-          Glide.with(context).load(user.getUserProfilePic())
+          Glide.with(context).load(user.getProfileUrl())
                   .placeholder(R.drawable.user)
                   .into(holder.userProfile);
 

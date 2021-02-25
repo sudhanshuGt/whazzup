@@ -109,7 +109,7 @@ public class chatActivity extends AppCompatActivity {
 
                 firebaseDatabaseChat.getReference().child("chats")
                         .child(senderRoom).updateChildren(lastMsgObj);
-                firebaseDatabaseChat.getReference().child("chata")
+                firebaseDatabaseChat.getReference().child("chats")
                         .child(receiverRoom).updateChildren(lastMsgObj);
                 
                firebaseDatabaseChat.getReference().child("chats")

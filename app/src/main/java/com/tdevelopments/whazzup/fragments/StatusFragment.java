@@ -66,35 +66,7 @@ public class StatusFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.statusRecy);
         recyclerView.setAdapter(statusAdapter);
 
-//        firebaseDatabase.getReference().child("stories")
-//                .addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        if (snapshot.exists())
-//
-//                        {
-//                            userStatuses.clear();
-//                            for (DataSnapshot storySnapshot : snapshot.getChildren()) {
-//
-//                                    UserStatus status = new UserStatus();
-//                                    status.setName(storySnapshot.child("name").getValue(String.class));
-//                                    status.setProfileImage(storySnapshot.child("profileImage").getValue(String.class));
-//                                    status.setLastUpdated(storySnapshot.child("lastUpdated").getValue(Long.class));
-//                                    userStatuses.add(status);
-//
-//                            }
-//                            statusAdapter.notifyDataSetChanged();
-//                        }
-//                        else {
-//                            Toast.makeText(getActivity(), "no stories", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
+
 
         firebaseDatabase.getReference().child("users")
                 .child(FirebaseAuth.getInstance().getUid())
@@ -102,6 +74,7 @@ public class StatusFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         user = snapshot.getValue(User.class);
+
                     }
 
                     @Override

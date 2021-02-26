@@ -54,7 +54,7 @@ public class chatFragment extends Fragment {
 
         // function to get the data from the firebase
         getTheUserDataFromForebase();
-        loggedInUserUid = FirebaseAuth.getInstance().getUid();
+
 
         return rootView;
 

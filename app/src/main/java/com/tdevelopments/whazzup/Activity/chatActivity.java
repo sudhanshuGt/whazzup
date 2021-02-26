@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.tdevelopments.whazzup.Adapter.MessagesAdapter;
 import com.tdevelopments.whazzup.R;
 import com.tdevelopments.whazzup.UserModel.Message;
+import com.tdevelopments.whazzup.UserModel.User;
+import com.tdevelopments.whazzup.account_setting;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -39,7 +42,8 @@ public class chatActivity extends AppCompatActivity {
      TextView btnToSendMsges;
      EditText chatBoxTosendmsg;
      TextView timeForMsg;
-     ImageView btnforback;
+     ImageView btnforback , userprofr;
+     User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,8 @@ public class chatActivity extends AppCompatActivity {
 
         usernamer = findViewById(R.id.userNameR);
         btnToSendMsges = findViewById(R.id.btnTosendMsg);
+        userprofr = findViewById(R.id.profile_image);
+
         chatBoxTosendmsg = findViewById(R.id.chatBoxTosendMsg);
         btnforback = findViewById(R.id.backbtnchat);
 
@@ -62,6 +68,24 @@ public class chatActivity extends AppCompatActivity {
         messagesAdapter = new MessagesAdapter(this, messages );
         chatboxRecyclerView = findViewById(R.id.chatboxrecy);
         chatboxRecyclerView.setAdapter(messagesAdapter);
+
+        // getting user profile of receiver
+        firebaseDatabaseChat.getReference().child("users")
+                .child(recieverUid)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        user = snapshot.getValue(User.class);
+                        Glide.with(chatActivity.this).load(user.getProfileUrl())
+                                .placeholder(R.drawable.user)
+                                .into(userprofr);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
 
         senderRoom = SenderUid + recieverUid;

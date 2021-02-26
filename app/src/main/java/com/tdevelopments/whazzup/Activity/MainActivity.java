@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.tdevelopments.whazzup.R;
+import com.tdevelopments.whazzup.account_setting;
 import com.tdevelopments.whazzup.fragments.CallFragment;
 import com.tdevelopments.whazzup.fragments.StatusFragment;
 import com.tdevelopments.whazzup.fragments.chatFragment;
@@ -48,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
         userView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(MainActivity.this, UserAuth.class);
+                Intent intent = new Intent(MainActivity.this, account_setting.class);
                 startActivity(intent);
+                finish();
             }
         });
 

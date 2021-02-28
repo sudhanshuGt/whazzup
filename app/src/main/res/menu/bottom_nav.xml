@@ -10,8 +10,15 @@
     
     <item
         android:id="@+id/phone_sec"
+        android:icon="@drawable/local_phone"
         android:title="calls"
-        android:icon="@drawable/phone"
+        app:cnb_backgroundColor="#fff">
+    </item>
+
+    <item
+        android:id="@+id/status_sec"
+        android:title="Status"
+        android:icon="@drawable/camera"
         app:cnb_backgroundColor="#fff">
     </item>
 

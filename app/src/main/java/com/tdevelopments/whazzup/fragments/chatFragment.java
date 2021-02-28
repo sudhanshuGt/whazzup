@@ -71,7 +71,9 @@ public class chatFragment extends Fragment {
                         users.clear();
                         for (DataSnapshot snapshot1 : snapshot.getChildren()){
                             User user =snapshot1.getValue(User.class);
-                            users.add(user);
+                            if (!user.getUserId().equals(FirebaseAuth.getInstance().getUid())) {
+                                users.add(user);
+                            }
                         }
 
                         usersAdaper.notifyDataSetChanged();

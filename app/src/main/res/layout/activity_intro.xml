@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/atma"
-        android:text="Handcrafted In India"
+        android:text="messaging app"
         android:textColor="#3B0995"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

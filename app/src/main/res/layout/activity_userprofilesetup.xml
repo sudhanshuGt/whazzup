@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#ffffff"
+    android:background="@color/app_background"
     tools:context=".Activity.userprofilesetup">
 
 
@@ -13,12 +13,12 @@
         android:id="@+id/profile_image"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/user"
+        android:src="@drawable/usernamesetup"
         android:layout_marginTop="80dp"
-        app:civ_circle_background_color="#ffffff"
+        app:civ_circle_background_color="@color/white"
         android:layout_gravity="center_horizontal"
         app:civ_border_width="2dp"
-        app:civ_border_color="#ccc"/>
+        app:civ_border_color="@color/color_ccc"/>
 
 
     <TextView
@@ -33,40 +33,78 @@
 
     </TextView>
 
-    <EditText
-        android:id="@+id/editTextUsername"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:inputType="textPersonName"
-        android:hint="@string/username"
-        android:autofillHints="" />
+        android:orientation="vertical"
+        android:layout_marginLeft="15sp"
+        android:layout_marginRight="15sp">
 
-    <EditText
-        android:id="@+id/editTextAbout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_marginLeft="20dp"
-        android:autofillHints=""
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp"
-        android:inputType="textPersonName"
-        android:text="@string/hey_there_i_m_using_whazzup"
-        tools:ignore="LabelFor" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userNameSetup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconTint="@color/color_555"
+            app:endIconTint="@color/color_555"
+            app:boxStrokeColor="@color/color_555"
+            app:endIconMode="clear_text"
+            android:layout_marginTop="20dp"
+            app:hintTextColor="@color/color_555"
+            app:boxStrokeWidthFocused="2dp"
+            android:backgroundTint="@color/color_555"
+            app:startIconDrawable="@drawable/usernamesetup"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textColor="@color/color_555"
+                android:hint="username"
+                android:background="@color/app_background"
+                android:fontFamily="@font/open_sans"
+                android:inputType="text">
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/userAboutSetup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconTint="@color/color_555"
+            app:endIconTint="@color/color_555"
+            app:boxStrokeColor="@color/color_555"
+            app:endIconMode="clear_text"
+            android:layout_marginTop="20dp"
+            app:hintTextColor="@color/color_555"
+            app:boxStrokeWidthFocused="2dp"
+            android:backgroundTint="@color/color_555"
+            app:startIconDrawable="@drawable/userabout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:textColor="@color/color_555"
+                android:hint="about you"
+                android:background="@color/app_background"
+                android:fontFamily="@font/open_sans"
+                android:inputType="text">
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-
-    <Button
-        android:id="@+id/buttonSetupProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#F8F9F9"
-        android:layout_margin="20dp"
-        android:text="@string/update_profile" />
+        <Button
+            android:id="@+id/buttonSetupProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_555"
+            android:layout_marginTop="20sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/atma_semibold"
+            android:text="@string/update_profile" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/skipProfileSetup"

@@ -57,25 +57,24 @@ public class UsersAdaper extends RecyclerView.Adapter<UsersAdaper.UserViewHolder
                       @SuppressLint("SetTextI18n")
                       @Override
                       public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
+                          if(snapshot.exists()) {
+                              String lastMsg = snapshot.child("lastMsg").getValue(String.class);
+                              long time = snapshot.child("lastMsgTime").getValue(Long.class);
+                              SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
+                              holder.lstMsgTime.setText(dateFormat.format(new Date(time)));
+                              
+                              // controlling string overflow on set text
+                              if (lastMsg.length() > 30 ) {
+                                 String choppingOff = lastMsg.substring(0, 30) + "....";
+                                 holder.lastMsgInlist.setText(choppingOff);
+                              } else {
+                                  holder.lastMsgInlist.setText(lastMsg);
+                              }                                 
 
-
-                            String lastMsg = snapshot.child("lastMsg").getValue(String.class);
-                            Integer time = snapshot.child(user.getUserId()).child("lastMsgTime").getValue(int.class);
-                            SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
-
-                            holder.lastMsgInlist.setText(lastMsg);
-                            long newTime;
-                            if (time != null) {
-                                newTime = time;
-                                holder.lstMsgTime.setText(dateFormat.format(new Date(newTime)));
-                            }
-
-                        }
-                        else {
-                             holder.lastMsgInlist.setText("Tap to chat");
-                             holder.lstMsgTime.setVisibility(View.INVISIBLE);
-                        }
+                          } else {
+                              holder.lastMsgInlist.setText("Tap to chat");
+                              holder.lstMsgTime.setVisibility(View.INVISIBLE);
+                          }
                       }
 
                       @Override

@@ -92,12 +92,15 @@ public class account_setting extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         user = snapshot.getValue(User.class);
-                        usernamecc.setText(user.getUserName());
-                        userabout.setText(user.getUserAbout());
-                        userPhoneacc.setText(user.getPhoneNumber());
-                        Glide.with(account_setting.this).load(user.getProfileUrl())
-                                .placeholder(R.drawable.user)
-                                .into(userprofile);
+                        if (user != null) {
+                            usernamecc.setText(user.getUserName());
+                            userabout.setText(user.getUserAbout());
+                            userPhoneacc.setText(user.getPhoneNumber());
+                            Glide.with(getApplicationContext()).load(user.getProfileUrl())
+                                    .placeholder(R.drawable.user)
+                                    .into(userprofile);
+                        }
+
                     }
 
                     @Override

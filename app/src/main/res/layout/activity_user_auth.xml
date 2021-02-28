@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.UserAuth"
-    android:background="#ffffff"
+    android:background="@color/app_background"
     android:orientation="vertical">
 
 
@@ -16,8 +16,15 @@
         android:layout_marginTop="50dp"
         android:fontFamily="@font/kavoon"
         android:text="Confirm Your Number"
-        android:textColor="#555">
+        android:textColor="@color/color_555">
 
+    </TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="make sure you have phone number to get otp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/color_555">
     </TextView>
 
     <LinearLayout
@@ -45,21 +52,21 @@
             android:id="@+id/userCred"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:startIconTint="#555"
-            app:endIconTint="#555"
-            app:boxStrokeColor="#555"
+            app:startIconTint="@color/color_555"
+            app:endIconTint="@color/color_555"
+            app:boxStrokeColor="@color/color_555"
             app:endIconMode="clear_text"
             android:layout_marginTop="20dp"
-            app:hintTextColor="#555"
+            app:hintTextColor="@color/color_555"
             app:boxStrokeWidthFocused="2dp"
-            android:backgroundTint="#555"
+            android:backgroundTint="@color/color_555"
             app:startIconDrawable="@drawable/local_phone"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:textColor="#555"
+                android:textColor="@color/color_555"
                 android:hint="@string/phone"
                 android:inputType="phone">
             </com.google.android.material.textfield.TextInputEditText>
@@ -71,7 +78,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="#555"
+            android:background="@color/color_555"
             android:fontFamily="@font/atma_semibold"
             android:text="Confirm"
             android:textColor="@color/white"></Button>

@@ -10,11 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Whazzup"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.chatActivity"
+        <activity android:name=".account_setting"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge"></activity>
         <activity
-            android:name=".Activity.userprofilesetup"
+            android:name=".Activity.storyImagePicker"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge"></activity>
+        <activity
+            android:name=".Activity.chatActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge" />
+        <activity
+            android:name=".Activity.userprofilesetup"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge" />
         <activity
             android:name=".Activity.IntroAct"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge">

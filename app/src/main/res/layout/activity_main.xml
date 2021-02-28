@@ -45,6 +45,7 @@
     </ImageView>
 
     <ImageView
+        android:id="@+id/storyImagePick"
         android:layout_width="26dp"
         android:layout_height="26dp"
         android:src="@drawable/camera"
@@ -74,7 +75,7 @@
            android:background="@drawable/nav_back"
            android:layout_marginLeft="30dp"
            android:layout_marginRight="30dp"
-           android:layout_marginBottom="10dp"
+           app:hideOnScroll="true"
            app:cnb_radius="20dp"
            android:elevation="10dp"
            app:cnb_iconSize="24dp"

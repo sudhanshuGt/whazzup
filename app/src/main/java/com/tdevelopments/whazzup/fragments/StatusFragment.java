@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -74,6 +75,7 @@ public class StatusFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         user = snapshot.getValue(User.class);
+                        
 
                     }
 
@@ -82,6 +84,38 @@ public class StatusFragment extends Fragment {
 
                     }
                 });
+
+        firebaseDatabase.getReference().child("stories").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                  if (snapshot.exists()) {
+                      for (DataSnapshot storySnapshot: snapshot.getChildren()) {
+                            UserStatus status = new UserStatus();
+                            status.setName(storySnapshot.child("name").getValue(String.class));
+                            status.setProfileImage(storySnapshot.child("profileUrl").getValue(String.class));
+                            status.setLastUpdated(storySnapshot.child("lastUpdated").getValue(Long.class));
+
+                            ArrayList<Status> statuses = new ArrayList<>() ;
+
+                            for (DataSnapshot statusSnapshot: storySnapshot.child("statuses").getChildren()) {
+                                Status  sampleStatus = statusSnapshot.getValue(Status.class);
+                                statuses.add(sampleStatus);
+                            }
+
+                            status.setStatuses(statuses);
+
+                            userStatuses.add(status);
+                            
+                      }
+                      statusAdapter.notifyDataSetChanged();
+                  }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
         buttonToUploadStatus.setOnClickListener(new View.OnClickListener() {

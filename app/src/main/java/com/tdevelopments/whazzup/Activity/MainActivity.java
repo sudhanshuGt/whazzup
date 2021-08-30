@@ -9,11 +9,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.tdevelopments.whazzup.R;
-import com.tdevelopments.whazzup.account_setting;
 import com.tdevelopments.whazzup.fragments.CallFragment;
 import com.tdevelopments.whazzup.fragments.StatusFragment;
 import com.tdevelopments.whazzup.fragments.chatFragment;

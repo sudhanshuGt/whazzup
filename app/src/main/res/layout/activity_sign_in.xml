@@ -88,6 +88,7 @@
             android:textColor="@color/white"
             android:background="@color/color_555"
             android:text="Verify"
+            style="@style/TextAppearance.MaterialComponents.Button"
             android:fontFamily="@font/atma_semibold">
 
         </Button>

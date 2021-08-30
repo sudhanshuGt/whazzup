@@ -48,9 +48,18 @@ public class StatusAdapter extends RecyclerView.Adapter<StatusAdapter.StatusView
     public void onBindViewHolder(@NonNull StatusViewHolder holder, int position) {
            UserStatus userStatus = userStatuses.get(position);
 
-           Status lastStatus = userStatus.getStatuses().get(userStatus.getStatuses().size() -1 );
 
-           Glide.with(context).load(lastStatus.getImageUrl()).into(holder.storyImage);
+          // checking if list have null data & setting a default image view until list get updated  to prevent from index bound error
+           if (userStatus.getStatuses().size() == 0) {
+               holder.storyImage.setImageResource(R.drawable.user);
+           }
+           // getting last image if list have more than one statuses
+           else if (userStatus.getStatuses().size() > 0) {
+               Status lastStatus = userStatus.getStatuses().get(userStatus.getStatuses().size() - 1 );
+               Glide.with(context).load(lastStatus.getImageUrl()).into(holder.storyImage);
+           }
+
+           // counting statuses size 
            holder.circularStatusView.setPortionsCount(userStatus.getStatuses().size());
 
            holder.userNameS.setText(userStatus.getName());

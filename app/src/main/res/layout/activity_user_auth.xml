@@ -81,6 +81,7 @@
             android:background="@color/color_555"
             android:fontFamily="@font/atma_semibold"
             android:text="Confirm"
+            style="@style/TextAppearance.MaterialComponents.Button"
             android:textColor="@color/white"></Button>
 
 

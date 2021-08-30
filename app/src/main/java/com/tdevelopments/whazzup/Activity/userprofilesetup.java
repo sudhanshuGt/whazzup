@@ -1,4 +1,4 @@
-package com.tdevelopments.whazzup.Activity;
+ package com.tdevelopments.whazzup.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

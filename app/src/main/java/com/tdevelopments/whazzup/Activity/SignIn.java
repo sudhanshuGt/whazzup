@@ -145,7 +145,7 @@ public class SignIn extends AppCompatActivity {
 
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) {
-                                    Toast.makeText(SignIn.this, "error in databse matching", Toast.LENGTH_SHORT).show(); //Don't ignore errors!
+                                    Toast.makeText(SignIn.this, "database error", Toast.LENGTH_SHORT).show(); //Don't ignore errors!
                                 }
                             };
                             userNameRef.addListenerForSingleValueEvent(eventListener);

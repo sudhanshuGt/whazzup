@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -39,6 +40,7 @@ import com.tdevelopments.whazzup.UserModel.UserStatus;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 
 public class StatusFragment extends Fragment {
@@ -47,6 +49,7 @@ public class StatusFragment extends Fragment {
     ProgressDialog progressDialog;
     FirebaseDatabase firebaseDatabase;
     RecyclerView recyclerView;
+    FirebaseAuth firebaseAuth;
     StatusAdapter statusAdapter;
     ArrayList<UserStatus> userStatuses;
     User user;
@@ -60,15 +63,34 @@ public class StatusFragment extends Fragment {
         progressDialog.setMessage("uploading...");
         progressDialog.setCancelable(false);
         firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
 
         userStatuses = new ArrayList<>();
         statusAdapter = new StatusAdapter(getActivity(), userStatuses );
         recyclerView = rootView.findViewById(R.id.statusRecy);
         recyclerView.setAdapter(statusAdapter);
+        
 
+        // function to delete user stories after 24 hour
+        long cutoff = new Date().getTime() - TimeUnit.MILLISECONDS.convert(24, TimeUnit.HOURS);
+        Query oldBug = firebaseDatabase.getReference().child("stories").child(firebaseAuth.getUid()).child("statuses").orderByChild("timeStamp").endAt(cutoff);
+        oldBug.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot itemSnapshot: snapshot.getChildren())
+                {
+                    itemSnapshot.getRef().removeValue();
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(getActivity(), "data base error", Toast.LENGTH_SHORT).show();
+            }
+        });
 
+        // function to get user refrence
         firebaseDatabase.getReference().child("users")
                 .child(FirebaseAuth.getInstance().getUid())
                 .addValueEventListener(new ValueEventListener() {
@@ -84,6 +106,7 @@ public class StatusFragment extends Fragment {
 
                     }
                 });
+
 
         firebaseDatabase.getReference().child("stories").addValueEventListener(new ValueEventListener() {
             @Override
@@ -103,7 +126,7 @@ public class StatusFragment extends Fragment {
                             }
 
                             status.setStatuses(statuses);
-
+                            userStatuses.clear();
                             userStatuses.add(status);
                             
                       }
@@ -117,7 +140,7 @@ public class StatusFragment extends Fragment {
             }
         });
 
-
+        // button get the image from internal storage
         buttonToUploadStatus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,7 +153,7 @@ public class StatusFragment extends Fragment {
 
         return rootView;
     }
-
+     // function to upload  image on firebase after image get selected from internal storage by user if it; snot null 😜..
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

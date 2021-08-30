@@ -97,7 +97,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
         public SentViewHolder(@NonNull View itemView) {
             super(itemView);
             sendTextView = itemView.findViewById(R.id.sendchat);
-            feelingS = itemView.findViewById(R.id.msgfeelingS);
+
         }
     }
 
@@ -107,7 +107,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
         public RecieverViewHolder(@NonNull View itemView) {
             super(itemView);
             recieveTextView = itemView.findViewById(R.id.recievechat);
-            feelingR = itemView.findViewById(R.id.msgfeelingR);
+           
         }
     }
 }

@@ -1,6 +1,5 @@
 package com.tdevelopments.whazzup.Activity;
 
-import androidx.activity.OnBackPressedDispatcher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,11 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -25,10 +22,8 @@ import com.tdevelopments.whazzup.Adapter.MessagesAdapter;
 import com.tdevelopments.whazzup.R;
 import com.tdevelopments.whazzup.UserModel.Message;
 import com.tdevelopments.whazzup.UserModel.User;
-import com.tdevelopments.whazzup.account_setting;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -74,62 +75,61 @@ public class userprofilesetup extends AppCompatActivity {
                 {
                     editUserName.setError(" set profile / username please !");
                  }
+                else {
+                    if (selectedProf != null || !enteredUsername.isEmpty())
+                    {
+                        progressDialog.setMessage("Creating Your profile , wait..");
+                        progressDialog.setCancelable(false);
+                        progressDialog.show();
 
-               
-
-                if (selectedProf != null || !enteredUsername.isEmpty())
-                {
-                    progressDialog.setMessage("Creating Your profile , wait..");
-                    progressDialog.setCancelable(false);
-                    progressDialog.show();
-
-                    StorageReference storageReference = firebaseStorage.getReference().child("UserProfile").child(firebaseAuth.getUid());
-                    storageReference.putFile(selectedProf).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                            if (task.isSuccessful())
-                            {
-                              storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                  @Override
-                                  public void onSuccess(Uri uri) {
+                        StorageReference storageReference = firebaseStorage.getReference().child("UserProfile").child(firebaseAuth.getUid());
+                        storageReference.putFile(selectedProf).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                                if (task.isSuccessful())
+                                {
+                                    storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
 
 
-                                      String profileUrl = uri.toString();
-                                      String UserId = firebaseAuth.getUid();
-                                      String UserName = editUserName.getEditText().getText().toString().trim();
-                                      String phoneNumber = firebaseAuth.getCurrentUser().getPhoneNumber();
-                                      String userAbout = editTextAbout.getEditText().getText().toString().trim();
+                                            String profileUrl = uri.toString();
+                                            String UserId = firebaseAuth.getUid();
+                                            String UserName = editUserName.getEditText().getText().toString().trim();
+                                            String phoneNumber = firebaseAuth.getCurrentUser().getPhoneNumber();
+                                            String userAbout = editTextAbout.getEditText().getText().toString().trim();
 
-                                      User user = new User(UserId, UserName, phoneNumber, profileUrl, userAbout);
+                                            User user = new User(UserId, UserName, phoneNumber, profileUrl, userAbout);
 
-                                      firebaseDatabase.getReference()
-                                              .child("users")
-                                              .child(UserId)
-                                              .setValue(user)
-                                              .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                  @Override
-                                                  public void onSuccess(Void aVoid) {
-                                                      progressDialog.dismiss();
-                                                      Intent intent = new Intent(userprofilesetup.this, MainActivity.class);
-                                                      startActivity(intent);
-                                                      finish();
 
-                                                  }
-                                              });
-                                  }
-                              });
+                                            firebaseDatabase.getReference()
+                                                    .child("users")
+                                                    .child(UserId)
+                                                    .setValue(user)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void aVoid) {
+                                                            progressDialog.dismiss();
+                                                            Intent intent = new Intent(userprofilesetup.this, MainActivity.class);
+                                                            startActivity(intent);
+                                                            finish();
+
+                                                        }
+                                                    });
+                                        }
+                                    });
+                                }
                             }
-                        }
-                    });
-                }
-                else
+                        });
+                    }
+                    else
                     {
                         // if user does'nt selected a profile image
 
                         String UserId = firebaseAuth.getUid();
-                        String UserName = editUserName.getEditText().getText().toString().trim();
+                        String UserName = "update you name here";
                         String phoneNumber = firebaseAuth.getCurrentUser().getPhoneNumber();
-                        String userAbout = editTextAbout.getEditText().getText().toString().trim();
+                        String userAbout = "hey im using whazzup";
 
                         User user = new User(UserId, UserName, phoneNumber, "No Image", userAbout);
 
@@ -147,6 +147,9 @@ public class userprofilesetup extends AppCompatActivity {
                                     }
                                 });
                     }
+                }
+
+
 
             }
         });

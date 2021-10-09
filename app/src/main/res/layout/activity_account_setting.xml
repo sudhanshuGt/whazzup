@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.account_setting"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2sp"
+        android:background="@color/white"
+        android:padding="10sp">
+
+        <ImageView
+            android:id="@+id/accnackbtn"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:layout_marginLeft="10sp"
+            android:src="@drawable/left">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="user setting"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/accnackbtn"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/open_sans">
+        </TextView>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/acc_sec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4sp"
+        android:layout_margin="10sp"
+        android:padding="5sp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userprofinsetting"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            app:civ_border_color="@color/color_ccc"
+            app:civ_border_width="1sp"
+            android:layout_marginLeft="20sp"
+            android:src="@drawable/usernamesetup">
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <TextView
+            android:id="@+id/usernameacc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/username"
+            android:layout_centerVertical="true"
+            android:textColor="@color/color_555"
+            android:fontFamily="@font/open_sans"
+            android:textStyle="bold"
+            android:layout_marginLeft="25sp"
+            android:layout_toRightOf="@id/userprofinsetting"
+            android:textSize="20sp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/editprofbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="edit"
+            android:fontFamily="@font/open_sans"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15sp"
+            android:textSize="15sp"
+            android:textColor="#2C10E0">
+        </TextView>
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="2sp"
+        android:backgroundTint="@color/color_555"
+        android:background="?android:attr/listDivider">
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="10sp"
+               android:padding="10sp"
+               android:elevation="4sp">
+
+               <ImageView
+                   android:id="@+id/setting_icn"
+                   android:layout_width="20sp"
+                   android:layout_centerVertical="true"
+                   android:layout_height="20sp"
+                   android:src="@drawable/settinglines">
+               </ImageView>
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Setting"
+                   android:layout_toRightOf="@id/setting_icn"
+                   android:fontFamily="@font/atma_semibold"
+                   android:layout_marginLeft="20sp"
+                   android:textColor="#055555"
+                   android:textSize="15sp">
+               </TextView>
+
+           </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:padding="10sp"
+                android:elevation="4sp">
+
+                <ImageView
+                    android:id="@+id/chatsetting_icn"
+                    android:layout_width="21sp"
+                    android:layout_height="21sp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/backupcloud">
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Backup "
+                    android:layout_toRightOf="@id/chatsetting_icn"
+                    android:fontFamily="@font/atma_semibold"
+                    android:layout_marginLeft="20sp"
+                    android:textColor="#055555"
+                    android:textSize="15sp">
+                </TextView>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:padding="10sp"
+                android:elevation="4sp">
+
+                <ImageView
+                    android:id="@+id/notification_setting"
+                    android:layout_width="21sp"
+                    android:layout_height="21sp"
+                    android:src="@drawable/notification">
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notification"
+                    android:layout_toRightOf="@id/notification_setting"
+                    android:fontFamily="@font/atma_semibold"
+                    android:layout_marginLeft="20sp"
+                    android:textColor="#055555"
+                    android:textSize="15sp">
+                </TextView>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:padding="10sp"
+                android:elevation="4sp">
+
+                <ImageView
+                    android:id="@+id/theme_icn"
+                    android:layout_width="21sp"
+                    android:layout_height="21sp"
+                    android:src="@drawable/keylogo">
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/encryptionSettings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Encryption Setting"
+                    android:layout_toRightOf="@id/theme_icn"
+                    android:fontFamily="@font/atma_semibold"
+                    android:textColor="#055555"
+                    android:layout_marginLeft="20sp"
+                    android:textSize="15sp">
+                </TextView>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="2sp"
+                android:backgroundTint="@color/color_555"
+                android:background="?android:attr/listDivider">
+            </RelativeLayout>
+            <Button
+                android:id="@+id/logoutBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:textSize="15sp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/cpp_background"
+                android:textColor="@color/color_555"
+                android:fontFamily="@font/atma_semibold"
+                android:text="log out">
+            </Button>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

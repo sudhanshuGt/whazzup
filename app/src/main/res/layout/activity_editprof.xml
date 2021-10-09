@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".Activity.editprof">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5sp"
+        android:padding="15sp">
+
+        <TextView
+            android:id="@+id/cancelBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textColor="#352828"
+            android:fontFamily="@font/open_sans"
+            android:layout_alignParentLeft="true"
+
+            android:textSize="18sp">
+        </TextView>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit profile"
+            android:fontFamily="@font/open_sans"
+            android:textStyle="bold"
+            android:textColor="#352828"
+            android:layout_centerInParent="true"
+            android:textSize="18sp">
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:fontFamily="@font/open_sans"
+            android:textColor="#352828"
+            android:layout_alignParentRight="true"
+            android:textSize="18sp">
+        </TextView>
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20sp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/editprofimgview"
+            android:layout_width="130sp"
+            android:layout_height="130sp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/usernamesetup"
+            app:civ_border_color="@color/color_ccc"
+            app:civ_border_width="1sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <ImageView
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_marginStart="92dp"
+            android:src="@drawable/edit"
+            app:layout_constraintBottom_toBottomOf="@+id/editprofimgview"
+            app:layout_constraintStart_toStartOf="@+id/editprofimgview"
+            app:layout_constraintTop_toTopOf="@+id/editprofimgview"
+            app:layout_constraintVertical_bias="1.0"></ImageView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editprofusername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconTint="@color/color_555"
+        app:endIconTint="@color/color_555"
+        app:boxStrokeColor="@color/color_555"
+        app:endIconMode="clear_text"
+        android:layout_marginTop="20dp"
+        app:hintTextColor="@color/color_555"
+        app:boxStrokeWidthFocused="2dp"
+        android:backgroundTint="@color/color_555"
+        app:startIconDrawable="@drawable/usernamesetup"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColor="@color/color_555"
+            android:hint="username"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"
+            android:background="@color/white"
+            android:fontFamily="@font/open_sans"
+            android:inputType="text">
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/editprofuserabout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIconTint="@color/color_555"
+        app:endIconTint="@color/color_555"
+        app:boxStrokeColor="@color/color_555"
+        app:endIconMode="clear_text"
+        android:layout_marginTop="20dp"
+        app:hintTextColor="@color/color_555"
+        app:boxStrokeWidthFocused="2dp"
+        android:backgroundTint="@color/color_555"
+        app:startIconDrawable="@drawable/userabout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:textColor="@color/color_555"
+            android:hint="About"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"
+            android:background="@color/white"
+            android:fontFamily="@font/open_sans"
+            android:inputType="text">
+        </com.google.android.material.textfield.TextInputEditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

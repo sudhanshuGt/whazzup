@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10sp"
+    android:orientation="horizontal">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/statusImage"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:padding="6dp"
+        android:src="@drawable/user" />
+
+    <com.devlomi.circularstatusview.CircularStatusView
+        android:id="@+id/circular_status_view"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        app:portion_color="#ccc"
+        app:portion_spacing="4dp"
+        app:portion_width="2dp"
+        app:portions_count="6" />
+    <TextView
+        android:id="@+id/userNameStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="username"
+        android:fontFamily="@font/atma"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/circular_status_view"
+        android:layout_marginLeft="20sp"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/color_555">
+    </TextView>
+
+    <TextView
+        android:id="@+id/statusTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:fontFamily="@font/atma"
+        android:textSize="15sp"
+        android:layout_centerVertical="true"
+        android:text="hh:mm"></TextView>
+
+</RelativeLayout>

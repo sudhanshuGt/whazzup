@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Whazzup"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.editprof"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
-        </activity>
+        <activity android:name=".Activity.EncryptionSetup"></activity>
+        <activity
+            android:name=".Activity.editprof"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge"></activity>
+        <activity
+            android:name=".Activity.account_setting"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge" />
         <activity
             android:name=".Activity.storyImagePicker"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar.Bridge" />
@@ -45,8 +49,14 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+<!--    permission-->
+    
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"></uses-permission>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>

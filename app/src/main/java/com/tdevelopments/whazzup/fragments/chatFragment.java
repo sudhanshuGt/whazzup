@@ -1,5 +1,8 @@
 package com.tdevelopments.whazzup.fragments;
-
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -8,6 +11,8 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +29,8 @@ import com.tdevelopments.whazzup.Adapter.UsersAdaper;
 
 import java.util.ArrayList;
 
+import static android.content.ContentValues.TAG;
+
 
 public class chatFragment extends Fragment {
 
@@ -33,6 +40,7 @@ public class chatFragment extends Fragment {
     ArrayList<User> users;
     UsersAdaper usersAdaper;
     String loggedInUserUid;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,6 +54,7 @@ public class chatFragment extends Fragment {
 
         // array list for recyclerView
         users = new ArrayList<>();
+
 
         // setting adapter and recycler view
         usersAdaper = new UsersAdaper(getActivity(), users);
@@ -85,4 +94,9 @@ public class chatFragment extends Fragment {
                     }
                 });
     }
+
+    private void getContactList(){
+
+    }
+
 }

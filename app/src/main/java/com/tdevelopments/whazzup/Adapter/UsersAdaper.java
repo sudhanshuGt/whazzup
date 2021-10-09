@@ -18,6 +18,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tdevelopments.whazzup.EncryptionAlgo.AES;
 import com.tdevelopments.whazzup.R;
 import com.tdevelopments.whazzup.UserModel.User;
 import com.tdevelopments.whazzup.Activity.chatActivity;
@@ -29,6 +30,7 @@ import java.util.Date;
 public class UsersAdaper extends RecyclerView.Adapter<UsersAdaper.UserViewHolder> {
      Context context;
     ArrayList<User> users;
+    public  static String thispwdtext ="qwerty";
 
     public UsersAdaper(Context context , ArrayList<User> users){
         this.context = context;
@@ -65,10 +67,19 @@ public class UsersAdaper extends RecyclerView.Adapter<UsersAdaper.UserViewHolder
                               
                               // controlling string overflow on set text
                               if (lastMsg.length() > 30 ) {
-                                 String choppingOff = lastMsg.substring(0, 30) + "....";
-                                 holder.lastMsgInlist.setText(choppingOff);
+                                  String choppingOff = null;
+                                  try {
+                                      choppingOff = AES.decrypt(lastMsg,thispwdtext).substring(0, 30) + "....";
+                                  } catch (Exception e) {
+                                      e.printStackTrace();
+                                  }
+                                  holder.lastMsgInlist.setText(choppingOff);
                               } else {
-                                  holder.lastMsgInlist.setText(lastMsg);
+                                  try {
+                                      holder.lastMsgInlist.setText(AES.decrypt(lastMsg, thispwdtext));
+                                  } catch (Exception e) {
+                                      e.printStackTrace();
+                                  }
                               }                                 
 
                           } else {

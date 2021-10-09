@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Activity.EncryptionSetup">
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50sp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:src="@drawable/encryptedlogo"></ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="15sp"
+            android:layout_marginRight="10sp"
+            android:textColor="#39403C"
+            android:fontFamily="@font/source_code_pro_medium"
+            android:text="This application provides you end-to-end encryption , choices of algorithms and Secret Key is UpTo you !"
+            android:textSize="15sp" >
+
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/algoSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25sp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <RadioButton
+            android:id="@+id/AESalgo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#39403C"
+            android:drawableRight="@drawable/encrypted_2"
+            android:text="AES" />
+
+        <RadioButton
+            android:id="@+id/DESalgo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#39403C"
+            android:drawableRight="@drawable/encrypted_2"
+            android:text="DES" />
+
+        <RadioButton
+            android:id="@+id/RSAalgo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#39403C"
+            android:drawableRight="@drawable/encrypted_2"
+            android:text="RSA" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/algoSection">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:fontFamily="@font/hind"
+            android:textColor="#39403C"
+            android:text="Enter Your Encryption Key :"
+            android:textSize="20sp"></TextView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/encryptionKeyData"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/color_555"
+            app:boxStrokeColor="@color/color_555"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="clear_text"
+            android:layout_margin="5sp"
+            android:hint="Ex. fgT5#JKio83#"
+            app:endIconTint="@color/color_555"
+            app:hintTextColor="@color/color_555"
+            app:startIconDrawable="@drawable/keylogo"
+            app:startIconTint="@color/color_555">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/source_code_pro_medium"
+                android:inputType="text"
+                android:background="@color/white"
+                android:textColor="@color/color_555"></com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/setEncryption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:fontFamily="@font/source_code_pro_medium"
+            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:textColor="#fff"
+            android:layout_marginTop="5sp"
+            android:padding="5sp">
+        </com.google.android.material.button.MaterialButton>
+        <TextView
+            android:id="@+id/skipEncryption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15sp"
+            android:text="Do it later !"
+            android:fontFamily="@font/hind"
+            android:textSize="15sp"
+            android:textColor="#1743DF"
+            android:layout_gravity="center">
+        </TextView>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

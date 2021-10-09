@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FEF9E7"
+    tools:context=".fragments.StatusFragment">
+
+    <RelativeLayout
+        android:id="@+id/uploadStatus_sec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10sp"
+        android:padding="10sp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/uploadImgS"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_marginLeft="20sp"
+            android:src="@drawable/add_status">
+        </ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="upload status"
+            android:fontFamily="@font/atma_semibold"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/uploadImgS"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20sp">
+        </TextView>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/statusRecy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20sp"
+        android:elevation="10sp"
+        android:background="@color/white"
+        android:layout_marginTop="10sp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

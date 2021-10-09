@@ -10,49 +10,44 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:background="@drawable/actionbar_back"
         android:elevation="10dp"
-        android:background="@drawable/actionbar_back">
+        android:padding="10dp">
 
-     <TextView
+        <ImageView
+            android:id="@+id/menu_option"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/user"></ImageView>
+
+        <ImageView
+            android:id="@+id/serach_btn"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="60dp"
+            android:src="@drawable/search"></ImageView>
+
+        <ImageView
+            android:id="@+id/storyImagePick"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="120dp"
+            android:src="@drawable/camera"></ImageView>
+
+        <TextView
             android:id="@+id/page_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Message"
-            android:letterSpacing="0.1"
-            android:fontFamily="@font/atma_semibold"
-            android:textSize="20sp"
             android:layout_alignParentLeft="true"
-            android:textColor="#555">
-     </TextView>
-
-    <ImageView
-        android:id="@+id/menu_option"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/user"
-        android:layout_marginRight="5dp"
-        android:layout_alignParentRight="true">
-    </ImageView>
-
-    <ImageView
-        android:id="@+id/serach_btn"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:src="@drawable/search"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="60dp">
-    </ImageView>
-
-    <ImageView
-        android:id="@+id/storyImagePick"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
-        android:src="@drawable/camera"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="120dp">
-    </ImageView>
-
+            android:fontFamily="@font/atma_semibold"
+            android:letterSpacing="0.1"
+            android:text="Message"
+            android:textColor="#555"
+            android:textSize="20sp"></TextView>
 
 
     </RelativeLayout>
@@ -68,22 +63,19 @@
            android:layout_height="match_parent">
        </FrameLayout>
 
-       <com.ismaeldivita.chipnavigation.ChipNavigationBar
-           android:id="@+id/bottom_nav"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:background="@drawable/nav_back"
-           android:layout_marginLeft="30dp"
-           android:layout_marginRight="30dp"
-           app:hideOnScroll="true"
-           app:cnb_radius="20dp"
-           android:elevation="10dp"
-           app:cnb_iconSize="24dp"
-           android:padding="7dp"
-           app:cnb_orientationMode="horizontal"
-           app:layout_constraintBottom_toBottomOf="@id/frameForFrag"
-           app:cnb_menuResource="@menu/bottom_nav">
-       </com.ismaeldivita.chipnavigation.ChipNavigationBar>
+        <com.ismaeldivita.chipnavigation.ChipNavigationBar
+            android:id="@+id/bottom_nav"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/actionbar_back"
+            android:elevation="10dp"
+            android:padding="7dp"
+            app:cnb_iconSize="24dp"
+            app:cnb_menuResource="@menu/bottom_nav"
+            app:cnb_orientationMode="horizontal"
+            app:cnb_radius="20dp"
+            app:hideOnScroll="true"
+            app:layout_constraintBottom_toBottomOf="@id/frameForFrag"></com.ismaeldivita.chipnavigation.ChipNavigationBar>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

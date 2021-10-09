@@ -43,7 +43,7 @@ import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 
-public class StatusFragment extends Fragment {
+public class   StatusFragment extends Fragment {
 
     ImageView buttonToUploadStatus;
     ProgressDialog progressDialog;
@@ -153,7 +153,7 @@ public class StatusFragment extends Fragment {
 
         return rootView;
     }
-     // function to upload  image on firebase after image get selected from internal storage by user if it; snot null 😜..
+     // function to upload  image on firebase after image get selected from internal storage by user if its not null 😜 ..
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

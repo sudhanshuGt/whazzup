@@ -16,6 +16,7 @@ import com.github.pgreze.reactions.ReactionsConfig;
 import com.github.pgreze.reactions.ReactionsConfigBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.tdevelopments.whazzup.EncryptionAlgo.AES;
 import com.tdevelopments.whazzup.R;
 import com.tdevelopments.whazzup.UserModel.Message;
 
@@ -28,7 +29,7 @@ public class MessagesAdapter extends RecyclerView.Adapter {
     ArrayList<Message> messages;
     final int ITEM_SENT = 1;
     final int ITEM_RECIEVE = 2;
-
+    public  static String newpwdtext ="qwerty";
     
 
     public MessagesAdapter(Context context , ArrayList<Message> messages){
@@ -73,14 +74,21 @@ public class MessagesAdapter extends RecyclerView.Adapter {
 
           if (holder.getClass() == SentViewHolder.class) {
               SentViewHolder viewHolder = (SentViewHolder)holder;
-              viewHolder.sendTextView.setText(message.getMessage());
+              try {
+                  viewHolder.sendTextView.setText(AES.decrypt(message.getMessage(), newpwdtext ));
+              } catch (Exception e) {
+                  e.printStackTrace();
+              }
 
 
           } 
           else {
               RecieverViewHolder viewHolder = (RecieverViewHolder)holder;
-              viewHolder.recieveTextView.setText(message.getMessage());
-
+              try {
+                  viewHolder.recieveTextView.setText(AES.decrypt(message.getMessage(), newpwdtext));
+              } catch (Exception e) {
+                  e.printStackTrace();
+              }
 
 
           }
